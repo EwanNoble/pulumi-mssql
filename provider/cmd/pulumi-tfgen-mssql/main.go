@@ -15,12 +15,12 @@
 package main
 
 import (
+	mssql "github.com/EwanNoble/pulumi-mssql/provider"
+	"github.com/EwanNoble/pulumi-mssql/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	xyz "github.com/pulumi/pulumi-xyz/provider"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("xyz", version.Version, xyz.Provider())
+	tfgen.Main("mssql", version.Version, mssql.Provider())
 }

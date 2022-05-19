@@ -1,0 +1,544 @@
+{
+    "name": "mssql",
+    "description": "A Pulumi package for creating and managing mssql cloud resources.",
+    "keywords": [
+        "pulumi",
+        "mssql",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`mssql` Terraform Provider](https://github.com/EwanNoble/terraform-provider-mssql).",
+    "repository": "https://github.com/EwanNoble/pulumi-mssql",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "debug": {
+                "type": "boolean",
+                "description": "Enable provider debug logging (logs to file terraform-provider-mssql.log)\n"
+            }
+        }
+    },
+    "types": {
+        "mssql:index/LoginServer:LoginServer": {
+            "properties": {
+                "azureLogin": {
+                    "$ref": "#/types/mssql:index/LoginServerAzureLogin:LoginServerAzureLogin",
+                    "description": "Azure AD login for managing the database resources. The attributes supported in the `azure_login` block is detailed below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host of the SQL Server. Changing this forces a new resource to be created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "login": {
+                    "$ref": "#/types/mssql:index/LoginServerLogin:LoginServerLogin",
+                    "description": "SQL Server login for managing the database resources. The attributes supported in the `login` block is detailed below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "description": "The port of the SQL Server. Defaults to `1433`. Changing this forces a new resource to be created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "host"
+            ]
+        },
+        "mssql:index/LoginServerAzureLogin:LoginServerAzureLogin": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The client ID of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_CLIENT_ID` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_CLIENT_SECRET` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tanant ID of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_TENANT_ID` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "tenantId"
+            ]
+        },
+        "mssql:index/LoginServerLogin:LoginServerLogin": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password of the SQL Server login. Can also be sourced from the `MSSQL_PASSWORD` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the SQL Server login. Can also be sourced from the `MSSQL_USERNAME` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "mssql:index/UserServer:UserServer": {
+            "properties": {
+                "azureLogin": {
+                    "$ref": "#/types/mssql:index/UserServerAzureLogin:UserServerAzureLogin",
+                    "description": "Azure AD login for managing the database resources. The attributes supported in the `azure_login` block is detailed below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host of the SQL Server. Changing this forces a new resource to be created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "login": {
+                    "$ref": "#/types/mssql:index/UserServerLogin:UserServerLogin",
+                    "description": "SQL Server login for managing the database resources. The attributes supported in the `login` block is detailed below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "string",
+                    "description": "The port of the SQL Server. Defaults to `1433`. Changing this forces a new resource to be created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "host"
+            ]
+        },
+        "mssql:index/UserServerAzureLogin:UserServerAzureLogin": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The client ID of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_CLIENT_ID` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_CLIENT_SECRET` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant ID of the principal used to login to the SQL Server. Can also be sourced from the `MSSQL_TENANT_ID` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "tenantId"
+            ]
+        },
+        "mssql:index/UserServerLogin:UserServerLogin": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password of the SQL Server login. Can also be sourced from the `MSSQL_PASSWORD` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the SQL Server login. Can also be sourced from the `MSSQL_USERNAME` environment variable.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the mssql package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "debug": {
+                "type": "boolean",
+                "description": "Enable provider debug logging (logs to file terraform-provider-mssql.log)\n"
+            }
+        },
+        "inputProperties": {
+            "debug": {
+                "type": "boolean",
+                "description": "Enable provider debug logging (logs to file terraform-provider-mssql.log)\n"
+            }
+        }
+    },
+    "resources": {
+        "mssql:index/login:Login": {
+            "description": "## # mssql.Login\n\nThe `mssql.Login` resource creates and manages a login on a SQL Server.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mssql from \"@pulumi/mssql\";\n\nconst example = new mssql.Login(\"example\", {\n    loginName: \"testlogin\",\n    server: {\n        azureLogin: {},\n        host: \"example-sql-server.database.windows.net\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_mssql as mssql\n\nexample = mssql.Login(\"example\",\n    login_name=\"testlogin\",\n    server=mssql.LoginServerArgs(\n        azure_login=mssql.LoginServerAzureLoginArgs(),\n        host=\"example-sql-server.database.windows.net\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Mssql = Pulumi.Mssql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Mssql.Login(\"example\", new Mssql.LoginArgs\n        {\n            LoginName = \"testlogin\",\n            Server = new Mssql.Inputs.LoginServerArgs\n            {\n                AzureLogin = ,\n                Host = \"example-sql-server.database.windows.net\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mssql/sdk/go/mssql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mssql.NewLogin(ctx, \"example\", \u0026mssql.LoginArgs{\n\t\t\tLoginName: pulumi.String(\"testlogin\"),\n\t\t\tServer: \u0026LoginServerArgs{\n\t\t\t\tAzureLogin: nil,\n\t\t\t\tHost:       pulumi.String(\"example-sql-server.database.windows.net\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nBefore importing `mssql_login`, you must to configure the authentication to your sql server1. Using Azure AD authentication, you must set the following environment variables`MSSQL_TENANT_ID`, `MSSQL_CLIENT_ID` and `MSSQL_CLIENT_SECRET`. 2. Using SQL authentication, you must set the following environment variables`MSSQL_USERNAME` and `MSSQL_PASSWORD`. After that you can import the SQL Server login using the server URL and `login name`, e.g.\n\n```sh\n $ pulumi import mssql:index/login:Login example 'mssql://example-sql-server.database.windows.net/testlogin'\n```\n\n ",
+            "properties": {
+                "defaultDatabase": {
+                    "type": "string",
+                    "description": "The default database of this server login. Defaults to `master`. This argument does not apply to Azure SQL Database.\n"
+                },
+                "defaultLanguage": {
+                    "type": "string",
+                    "description": "The default language of this server login. Defaults to `us_english`. This argument does not apply to Azure SQL Database.\n"
+                },
+                "loginName": {
+                    "type": "string",
+                    "description": "The name of the server login. Changing this forces a new resource to be created.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the server login.\n"
+                },
+                "principalId": {
+                    "type": "integer",
+                    "description": "The principal id of this server login.\n"
+                },
+                "server": {
+                    "$ref": "#/types/mssql:index/LoginServer:LoginServer",
+                    "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                }
+            },
+            "required": [
+                "loginName",
+                "password",
+                "principalId",
+                "server"
+            ],
+            "inputProperties": {
+                "defaultDatabase": {
+                    "type": "string",
+                    "description": "The default database of this server login. Defaults to `master`. This argument does not apply to Azure SQL Database.\n"
+                },
+                "defaultLanguage": {
+                    "type": "string",
+                    "description": "The default language of this server login. Defaults to `us_english`. This argument does not apply to Azure SQL Database.\n"
+                },
+                "loginName": {
+                    "type": "string",
+                    "description": "The name of the server login. Changing this forces a new resource to be created.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the server login.\n"
+                },
+                "server": {
+                    "$ref": "#/types/mssql:index/LoginServer:LoginServer",
+                    "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                }
+            },
+            "requiredInputs": [
+                "loginName",
+                "password",
+                "server"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Login resources.\n",
+                "properties": {
+                    "defaultDatabase": {
+                        "type": "string",
+                        "description": "The default database of this server login. Defaults to `master`. This argument does not apply to Azure SQL Database.\n"
+                    },
+                    "defaultLanguage": {
+                        "type": "string",
+                        "description": "The default language of this server login. Defaults to `us_english`. This argument does not apply to Azure SQL Database.\n"
+                    },
+                    "loginName": {
+                        "type": "string",
+                        "description": "The name of the server login. Changing this forces a new resource to be created.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the server login.\n"
+                    },
+                    "principalId": {
+                        "type": "integer",
+                        "description": "The principal id of this server login.\n"
+                    },
+                    "server": {
+                        "$ref": "#/types/mssql:index/LoginServer:LoginServer",
+                        "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "mssql:index/user:User": {
+            "description": "## # mssql.User\n\nThe `mssql.User` resource creates and manages a user on a SQL Server database.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mssql from \"@pulumi/mssql\";\n\nconst example = new mssql.User(\"example\", {\n    roles: [\"db_owner\"],\n    server: {\n        azureLogin: {\n            clientId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            clientSecret: \"terriblySecretSecret\",\n            tenantId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        },\n        host: \"example-sql-server.database.windows.net\",\n    },\n    username: \"user@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mssql as mssql\n\nexample = mssql.User(\"example\",\n    roles=[\"db_owner\"],\n    server=mssql.UserServerArgs(\n        azure_login=mssql.UserServerAzureLoginArgs(\n            client_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            client_secret=\"terriblySecretSecret\",\n            tenant_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        ),\n        host=\"example-sql-server.database.windows.net\",\n    ),\n    username=\"user@example.com\")\n```\n```csharp\nusing Pulumi;\nusing Mssql = Pulumi.Mssql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Mssql.User(\"example\", new Mssql.UserArgs\n        {\n            Roles = \n            {\n                \"db_owner\",\n            },\n            Server = new Mssql.Inputs.UserServerArgs\n            {\n                AzureLogin = new Mssql.Inputs.UserServerAzureLoginArgs\n                {\n                    ClientId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    ClientSecret = \"terriblySecretSecret\",\n                    TenantId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                },\n                Host = \"example-sql-server.database.windows.net\",\n            },\n            Username = \"user@example.com\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mssql/sdk/go/mssql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mssql.NewUser(ctx, \"example\", \u0026mssql.UserArgs{\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"db_owner\"),\n\t\t\t},\n\t\t\tServer: \u0026UserServerArgs{\n\t\t\t\tAzureLogin: \u0026UserServerAzureLoginArgs{\n\t\t\t\t\tClientId:     pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\t\t\tClientSecret: pulumi.String(\"terriblySecretSecret\"),\n\t\t\t\t\tTenantId:     pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\t\t},\n\t\t\t\tHost: pulumi.String(\"example-sql-server.database.windows.net\"),\n\t\t\t},\n\t\t\tUsername: pulumi.String(\"user@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n\u003e Note that in order to create an external user referencing an Azure AD entity (user, application), the Azure SQL Server needs to be a member of an Azure AD group assigned the Azure AD role `Directory Readers`. If it is not possible to give the Azure SQL Server this role (through the group), you can use the `object id` of the Azure AD entity instead.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nBefore importing `mssql_user`, you must to configure the authentication to your sql server1. Using Azure AD authentication, you must set the following environment variables`MSSQL_TENANT_ID`, `MSSQL_CLIENT_ID` and `MSSQL_CLIENT_SECRET`. 2. Using SQL authentication, you must set the following environment variables`MSSQL_USERNAME` and `MSSQL_PASSWORD`. After that you can import the SQL Server database user using the server URL and `login name`, e.g.\n\n```sh\n $ pulumi import mssql:index/user:User example 'mssql://example-sql-server.database.windows.net/master/user@example.com'\n```\n\n ",
+            "properties": {
+                "authenticationType": {
+                    "type": "string",
+                    "description": "One of `DATABASE`, `INSTANCE`, or `EXTERNAL`.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The user will be created in this database. Defaults to `master`. Changing this forces a new resource to be created.\n"
+                },
+                "defaultLanguage": {
+                    "type": "string",
+                    "description": "Specifies the default language for the user. If no default language is specified, the default language for the user will bed the default language of the database. This argument does not apply to Azure SQL Database or if the user is not a contained database user.\n"
+                },
+                "defaultSchema": {
+                    "type": "string",
+                    "description": "Specifies the first schema that will be searched by the server when it resolves the names of objects for this database user. Defaults to `dbo`.\n"
+                },
+                "loginName": {
+                    "type": "string",
+                    "description": "The login name of the database user. This must refer to an existing SQL Server login name. Conflicts with the `password` argument. Changing this forces a new resource to be created.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The object id of the external username. Only used in azure_login auth context when AAD role delegation to sql server identity is not possible.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the database user. Conflicts with the `login_name` argument. Changing this forces a new resource to be created.\n"
+                },
+                "principalId": {
+                    "type": "integer",
+                    "description": "The principal id of this database user.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of database roles the user has. Defaults to none.\n"
+                },
+                "server": {
+                    "$ref": "#/types/mssql:index/UserServer:UserServer",
+                    "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the database user. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "authenticationType",
+                "principalId",
+                "server",
+                "username"
+            ],
+            "inputProperties": {
+                "database": {
+                    "type": "string",
+                    "description": "The user will be created in this database. Defaults to `master`. Changing this forces a new resource to be created.\n"
+                },
+                "defaultLanguage": {
+                    "type": "string",
+                    "description": "Specifies the default language for the user. If no default language is specified, the default language for the user will bed the default language of the database. This argument does not apply to Azure SQL Database or if the user is not a contained database user.\n"
+                },
+                "defaultSchema": {
+                    "type": "string",
+                    "description": "Specifies the first schema that will be searched by the server when it resolves the names of objects for this database user. Defaults to `dbo`.\n"
+                },
+                "loginName": {
+                    "type": "string",
+                    "description": "The login name of the database user. This must refer to an existing SQL Server login name. Conflicts with the `password` argument. Changing this forces a new resource to be created.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The object id of the external username. Only used in azure_login auth context when AAD role delegation to sql server identity is not possible.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the database user. Conflicts with the `login_name` argument. Changing this forces a new resource to be created.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of database roles the user has. Defaults to none.\n"
+                },
+                "server": {
+                    "$ref": "#/types/mssql:index/UserServer:UserServer",
+                    "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the database user. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "requiredInputs": [
+                "server",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "authenticationType": {
+                        "type": "string",
+                        "description": "One of `DATABASE`, `INSTANCE`, or `EXTERNAL`.\n"
+                    },
+                    "database": {
+                        "type": "string",
+                        "description": "The user will be created in this database. Defaults to `master`. Changing this forces a new resource to be created.\n"
+                    },
+                    "defaultLanguage": {
+                        "type": "string",
+                        "description": "Specifies the default language for the user. If no default language is specified, the default language for the user will bed the default language of the database. This argument does not apply to Azure SQL Database or if the user is not a contained database user.\n"
+                    },
+                    "defaultSchema": {
+                        "type": "string",
+                        "description": "Specifies the first schema that will be searched by the server when it resolves the names of objects for this database user. Defaults to `dbo`.\n"
+                    },
+                    "loginName": {
+                        "type": "string",
+                        "description": "The login name of the database user. This must refer to an existing SQL Server login name. Conflicts with the `password` argument. Changing this forces a new resource to be created.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The object id of the external username. Only used in azure_login auth context when AAD role delegation to sql server identity is not possible.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the database user. Conflicts with the `login_name` argument. Changing this forces a new resource to be created.\n"
+                    },
+                    "principalId": {
+                        "type": "integer",
+                        "description": "The principal id of this database user.\n"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of database roles the user has. Defaults to none.\n"
+                    },
+                    "server": {
+                        "$ref": "#/types/mssql:index/UserServer:UserServer",
+                        "description": "Server and login details for the SQL Server. The attributes supported in the `server` block is detailed below.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The name of the database user. Changing this forces a new resource to be created.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-mssql/sdk/go/mssql"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing mssql cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/EwanNoble/terraform-provider-mssql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-mssql` repo](https://github.com/pulumi/pulumi-mssql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`EwanNoble/terraform-provider-mssql` repo](https://github.com/EwanNoble/terraform-provider-mssql/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/EwanNoble/terraform-provider-mssql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-mssql` repo](https://github.com/pulumi/pulumi-mssql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`EwanNoble/terraform-provider-mssql` repo](https://github.com/EwanNoble/terraform-provider-mssql/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
